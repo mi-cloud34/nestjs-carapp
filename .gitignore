@@ -1,11 +1,10 @@
 # compiled output
 /dist
 /node_modules
-/src/auths
 /src/kms
 /src/models
 /src/payments
-/src/user
+
 
 
 
