@@ -1,6 +1,7 @@
 import { Injectable, NotFoundException } from '@nestjs/common';
 import { InjectModel } from '@nestjs/mongoose';
 import { FilterQuery, Model } from 'mongoose';
+import { Color } from 'src/colors/entities/color.entity';
 import { ICar } from 'src/interfaces/ıcars';
 import { IRepository } from 'src/repositories/ırepositories';
 import { CreateCarDto } from './dto/create-car.dto';
@@ -19,7 +20,9 @@ export class CarsService implements IRepository<ICar>{
     return await newCar.save();
  }
   async findAll(): Promise<ICar[]> {
-    return  await this.carModel.find();
+    
+    return  await this.carModel.find().exec();
+   // return  await this.carModel.find().populate({path:'Color', select:'name description userId'}).exec();
 }
   async findOne(id: string): Promise<ICar> {
     return  await this.carModel.findById(id).exec();
@@ -31,3 +34,7 @@ export class CarsService implements IRepository<ICar>{
     return this.carModel.remove(id);
   }
 }
+function opts(opts: any, arg1: {}): ICar[] | PromiseLike<ICar[]> {
+  throw new Error('Function not implemented.');
+}
+

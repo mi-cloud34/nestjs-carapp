@@ -32,3 +32,5 @@ async function bootstrap() {
   await app.listen(3000)
 }
 bootstrap();
+/* prestart:"tsc --build tsconfig-simple.json" ,*/
+/* prestart:"npm:build" ,*/

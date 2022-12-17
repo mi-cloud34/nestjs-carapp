@@ -9,7 +9,7 @@ import { Car } from './entities/car.entity';
 
 @Controller('cars')
 export class CarsController {
-  constructor(private readonly carsService: IRepository<Car>) {}
+  constructor(@Inject(forwardRef(() => CarsService)) private readonly carsService: IRepository<Car>) {}
 
   @Post()
   async createStudent(@Res() response, @Body() createCarDto: CreateCarDto) {

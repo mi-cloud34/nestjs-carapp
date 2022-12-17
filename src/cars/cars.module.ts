@@ -9,9 +9,10 @@ import {  CarSchema } from './entities/car.entity';
   controllers: [CarsController],
   providers:
   [ CarsService,
-    { 
+   /*  { 
     useClass:CarsService,
-    provide:REPOSİTORY_SERVICE }] 
+    provide:REPOSİTORY_SERVICE } */
+  ] 
   
   })
 export class CarsModule {}

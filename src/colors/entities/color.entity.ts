@@ -1,5 +1,6 @@
-import { Prop, SchemaFactory } from "@nestjs/mongoose";
+import { Prop, Schema, SchemaFactory } from "@nestjs/mongoose";
 export type ColorDocument = Color & Document;
+@Schema()
 export class Color {
     @Prop({require:true})
     name:string;

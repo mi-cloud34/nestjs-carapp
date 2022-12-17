@@ -25,7 +25,7 @@ export class Car {
     lt: number;
     @Prop({required: true})
     lg: number;
-    @Prop({required: true})
+   //@Prop({required: true})
     carimage: number;
     @Prop({ type: mongoose.Schema.Types.ObjectId, ref: 'User' })
     userId: User
