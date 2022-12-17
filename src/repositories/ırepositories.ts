@@ -1,6 +1,6 @@
-
+ 
 export const REPOSİTORY_SERVICE = 'REPOSİTORY_SERVICE';
-
+ 
 export   interface IRepository<T> {
       create(t:T):Promise<T>;
     
