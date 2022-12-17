@@ -8,10 +8,10 @@ import { UpdateCarDto } from './dto/update-car.dto';
 import { Car } from './entities/car.entity';
 
 @Injectable()
-export class CarsService extends IRepository<ICar>{
+export class CarsService implements IRepository<ICar>{
   
   constructor(@InjectModel(Car.name) private carModel:Model<ICar>) {
-    super();
+    
   }
  
   async create(createCarDto: CreateCarDto): Promise<ICar> {
