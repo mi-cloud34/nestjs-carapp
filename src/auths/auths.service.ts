@@ -1,17 +1,11 @@
-
 import { Injectable, HttpStatus, HttpException } from '@nestjs/common';
 import { JwtService } from '@nestjs/jwt';
-
 import * as bcrypt from 'bcrypt';
 import { IUser } from 'src/interfaces/iuser';
-
 import { CreateUserDto } from 'src/user/dto/createUserDto';
 import { LoginUserDto } from 'src/user/dto/loginUserDto';
 import { RegisterUserDto } from 'src/user/dto/registerUserDto';
 import { UserService } from 'src/user/user.service';
-
-
-
 
 @Injectable()
 export class AuthService {
@@ -20,12 +14,12 @@ export class AuthService {
     private jwtService: JwtService,
   ) {}
 
-  async hashPassword(password: string): Promise<string> {
+  public async hashPassword(password: string): Promise<string> {
     return bcrypt.hash(password, 12);
   }
 
-  async register(user: Readonly<RegisterUserDto>): Promise<IUser | any> {
-    const {email, password } = user;
+  public async register(user: Readonly<RegisterUserDto>): Promise<IUser | any> {
+    const { email, password } = user;
 
     const existingUser = await this.userService.findByEmail(email);
 
@@ -36,19 +30,19 @@ export class AuthService {
       );
 
     const hashedPassword = await this.hashPassword(password);
-    let newUser1:CreateUserDto;
+    let newUser1: CreateUserDto;
     const newUser = await this.userService.create(newUser1, hashedPassword);
     return this.userService._getUserDetails(newUser);
   }
 
-  async doesPasswordMatch(
+  public async doesPasswordMatch(
     password: string,
     hashedPassword: string,
   ): Promise<boolean> {
     return bcrypt.compare(password, hashedPassword);
   }
 
-  async validateUser(
+  public async validateUser(
     email: string,
     password: string,
   ): Promise<IUser | null> {
@@ -67,7 +61,7 @@ export class AuthService {
     return this.userService._getUserDetails(user);
   }
 
-  async login(
+  public async login(
     existingUser: LoginUserDto,
   ): Promise<{ token: string } | null> {
     const { email, password } = existingUser;
@@ -80,7 +74,7 @@ export class AuthService {
     return { token: jwt };
   }
 
-  async verifyJwt(jwt: string): Promise<{ exp: number }> {
+  public async verifyJwt(jwt: string): Promise<{ exp: number }> {
     try {
       const { exp } = await this.jwtService.verifyAsync(jwt);
       return { exp };

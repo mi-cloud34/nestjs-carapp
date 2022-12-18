@@ -1,9 +1,11 @@
 import { Prop, SchemaFactory } from '@nestjs/mongoose';
 
 export type UserDocument = User & Document;
+
 export class User {
   @Prop({ require: true })
-  name: string;
+  public name: string;
+
   @Prop({
     require: true,
     unique: true,
@@ -12,18 +14,25 @@ export class User {
       'Please provide e valid email',
     ],
   })
-  email: string;
-  @Prop({ require: true, minlength: 6, select: false, })
-  password: string;
-  @Prop({ require: true ,enum: ['user', 'admin'] })
-  role: string;
+  public email: string;
+
+  @Prop({ require: true, minlength: 6, select: false })
+  public password: string;
+
+  @Prop({ require: true, enum: ['user', 'admin'] })
+  public role: string;
+
   @Prop({ default: Date.now })
-  createdAt: Date;
+  public createdAt: Date;
+
   @Prop({ require: true })
-  place: string;
+  public place: string;
+
   @Prop({ require: true })
-  image: string;
+  public image: string;
+
   @Prop({ default: false })
-  blocked: boolean;
+  public blocked: boolean;
 }
+
 export const UserSchema = SchemaFactory.createForClass(User);

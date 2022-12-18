@@ -8,24 +8,30 @@ import { UpdateColorDto } from './dto/update-color.dto';
 import { Color } from './entities/color.entity';
 
 @Injectable()
-export class ColorsService implements IRepository<IColor>{
-  
-  constructor(@InjectModel(Color.name) private colorModel:Model<IColor>) { }
- 
-  async create(createColorDto: CreateColorDto): Promise<IColor> {
-    const newCar =new this.colorModel(createColorDto);
+export class ColorsService implements IRepository<IColor> {
+  constructor(@InjectModel(Color.name) private colorModel: Model<IColor>) {}
+
+  public async create(createColorDto: CreateColorDto): Promise<IColor> {
+    const newCar = new this.colorModel(createColorDto);
     return await newCar.save();
- }
-  async findAll(): Promise<IColor[]> {
-    return  await this.colorModel.find();
-}
-  async findOne(id: string): Promise<IColor> {
-    return  await this.colorModel.findById(id).exec();
- }
-  async update(carId: string, t: Partial<UpdateColorDto>): Promise<IColor> {
+  }
+
+  public async findAll(): Promise<IColor[]> {
+    return await this.colorModel.find();
+  }
+
+  public async findOne(id: string): Promise<IColor> {
+    return await this.colorModel.findById(id).exec();
+  }
+
+  public async update(
+    carId: string,
+    t: Partial<UpdateColorDto>,
+  ): Promise<IColor> {
     return await this.colorModel.findByIdAndUpdate(carId, t, { new: true });
-}
- async remove(id: string): Promise<IColor> {
+  }
+
+  public async remove(id: string): Promise<IColor> {
     return this.colorModel.remove(id);
   }
 }

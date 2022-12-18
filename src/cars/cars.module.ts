@@ -3,16 +3,16 @@ import { CarsService } from './cars.service';
 import { CarsController } from './cars.controller';
 import { REPOSİTORY_SERVICE } from 'src/repositories/ırepositories';
 import { MongooseModule } from '@nestjs/mongoose';
-import {  CarSchema } from './entities/car.entity';
+import { CarSchema } from './entities/car.entity';
+
 @Module({
-  imports:[MongooseModule.forFeature([{ name: 'Car',schema: CarSchema }])],
+  imports: [MongooseModule.forFeature([{ name: 'Car', schema: CarSchema }])],
   controllers: [CarsController],
-  providers:
-  [ CarsService,
-   /*  { 
+  providers: [
+    CarsService,
+    /*  { 
     useClass:CarsService,
     provide:REPOSİTORY_SERVICE } */
-  ] 
-  
-  })
+  ],
+})
 export class CarsModule {}

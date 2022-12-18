@@ -1,11 +1,11 @@
-import { IsNotEmpty, IsString, MaxLength } from "class-validator";
+import { IsNotEmpty, IsString } from 'class-validator';
 
-export class LoginUserDto{
-    @IsString()
-    @IsNotEmpty()
-    readonly email: string;
-    @IsString()
-    @IsNotEmpty()
-    readonly password: string;
-    
+export class LoginUserDto {
+  @IsString()
+  @IsNotEmpty()
+  public readonly email: string;
+
+  @IsString()
+  @IsNotEmpty()
+  public readonly password: string;
 }

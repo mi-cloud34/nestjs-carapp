@@ -1,35 +1,54 @@
-import { Controller, Get, Post, Body, Patch, Param, Delete, forwardRef, Inject } from '@nestjs/common';
+import {
+  Controller,
+  Get,
+  Post,
+  Body,
+  Patch,
+  Param,
+  Delete,
+  forwardRef,
+  Inject,
+} from '@nestjs/common';
 import { CreateUserDto } from './dto/createUserDto';
 import { UpdateUserDto } from './dto/updateUserDto';
 import { UserService } from './user.service';
- 
+import { IUser } from 'src/interfaces/iuser';
 
-@Controller('users') 
-  export class UserController {
-  constructor( @Inject(forwardRef(() => UserService)) private readonly usersService: UserService) {}
+@Controller('users')
+export class UserController {
+  constructor(
+    @Inject(forwardRef(() => UserService))
+    private readonly usersService: UserService,
+  ) {}
 
   @Post()
-  create(@Body()createUserDto: CreateUserDto, password:string, ) {
-    return this.usersService.create(createUserDto,password);
+  public async create(
+    @Body() createUserDto: CreateUserDto,
+    password: string,
+  ): Promise<IUser> {
+    return this.usersService.create(createUserDto, password);
   }
 
   @Get()
-  findAll() {
-    return this.usersService.findAll()
+  public async findAll(): Promise<IUser[]> {
+    return this.usersService.findAll();
   }
 
   @Get(':id')
-  findOne(@Param('id') id: string) {
+  public async findOne(@Param('id') id: string): Promise<IUser> {
     return this.usersService.findOne(id);
   }
 
   @Patch(':id')
-  update(@Param('id') id: string, @Body() updateUserDto: UpdateUserDto) {
+  public update(
+    @Param('id') id: string,
+    @Body() updateUserDto: UpdateUserDto,
+  ): Promise<IUser> {
     return this.usersService.update(id, updateUserDto);
   }
 
   @Delete(':id')
-  remove(@Param('id') id: string) {
+  public remove(@Param('id') id: string): Promise<IUser> {
     return this.usersService.remove(id);
   }
 }

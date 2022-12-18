@@ -8,14 +8,15 @@ import { Module } from '@nestjs/common';
 import { AuthService } from 'src/auths/auths.service';
 
 @Module({
-  imports:[MongooseModule.forFeature([{ name: 'User',schema: UserSchema }])],
+  imports: [MongooseModule.forFeature([{ name: 'User', schema: UserSchema }])],
   controllers: [UserController],
-  providers: [ UserService
+  providers: [
+    UserService,
     /* { 
     useClass:UserService,
     provide:REPOSİTORY_SERVICE
   } */
-],exports: [UserService],
-  
+  ],
+  exports: [UserService],
 })
 export class UserModule {}

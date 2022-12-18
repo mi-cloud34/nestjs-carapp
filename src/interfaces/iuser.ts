@@ -1,18 +1,17 @@
 export interface IUser extends Document {
-    readonly  name: string;
+  readonly name: string;
 
-    readonly  email: string;
+  readonly email: string;
 
-    readonly password: string;
+  readonly password: string;
 
-    readonly role: string;
+  readonly role: string;
 
-    readonly createdAt: Date;
+  readonly createdAt: Date;
 
-    readonly  place: string;
+  readonly place: string;
 
-    readonly image: string;
+  readonly image: string;
 
-    readonly blocked: boolean;
+  readonly blocked: boolean;
 }
-
