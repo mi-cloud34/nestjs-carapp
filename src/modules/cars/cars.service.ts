@@ -2,7 +2,7 @@ import { Injectable } from '@nestjs/common';
 import { InjectModel } from '@nestjs/mongoose';
 import { Model } from 'mongoose';
 import { ICar } from 'src/common/interfaces/ıcars';
-import { IRepository } from 'src/repositories/ırepositories';
+import { IRepository } from 'src/common/repositories/ırepositories';
 import { CreateCarDto } from './dto/create-car.dto';
 import { UpdateCarDto } from './dto/update-car.dto';
 import { Car } from './entities/car.entity';

@@ -1,7 +1,7 @@
 import { Module } from '@nestjs/common';
 import { ColorsService } from './colors.service';
 import { ColorsController } from './colors.controller';
-import { REPOSİTORY_SERVICE } from 'src/repositories/ırepositories';
+import { REPOSİTORY_SERVICE } from 'src/common/repositories/ırepositories';
 import { MongooseModule } from '@nestjs/mongoose';
 import { ColorSchema } from './entities/color.entity';
 

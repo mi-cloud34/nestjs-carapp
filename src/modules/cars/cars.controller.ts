@@ -11,7 +11,7 @@ import {
   Inject,
   forwardRef,
 } from '@nestjs/common';
-import { IRepository } from 'src/repositories/ırepositories';
+import { IRepository } from 'src/common/repositories/ırepositories';
 import { CarsService } from './cars.service';
 import { CreateCarDto } from './dto/create-car.dto';
 import { UpdateCarDto } from './dto/update-car.dto';
