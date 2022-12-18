@@ -9,8 +9,8 @@ import {
   forwardRef,
   Inject,
 } from '@nestjs/common';
-import { CreateUserDto } from './dto/createUserDto';
-import { UpdateUserDto } from './dto/updateUserDto';
+import { CreateUserDto } from './dto/create-user.dto';
+import { UpdateUserDto } from './dto/update-user.dto';
 import { UserService } from './user.service';
 import { IUser } from 'src/common/interfaces/user.interface';
 
