@@ -1,10 +1,10 @@
 import { Prop, Schema, SchemaFactory } from '@nestjs/mongoose';
 import mongoose from 'mongoose';
-import { Color } from 'src/colors/entities/color.entity';
-import { Km } from 'src/kms/entities/km.entity';
-import { Model } from 'src/models/entities/model.entity';
-import { User } from 'src/user/entities/user.entity';
-import { Year } from 'src/years/entities/year.entity';
+import { Color } from 'src/modules/colors/entities/color.entity';
+import { Km } from 'src/modules/kms/entities/km.entity';
+import { Model } from 'src/modules/models/entities/model.entity';
+import { User } from 'src/modules/user/entities/user.entity';
+import { Year } from 'src/modules/years/entities/year.entity';
 
 export type CarDocument = Car & Document;
 
