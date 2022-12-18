@@ -9,8 +9,8 @@ import { UserService } from './user.service';
   constructor( @Inject(forwardRef(() => UserService)) private readonly usersService: UserService) {}
 
   @Post()
-  create(@Body()createUserDto: CreateUserDto, password:string, ) {
-    return this.usersService.create(createUserDto,password);
+  create(@Body()createUserDto: CreateUserDto ) {
+    return this.usersService.create(createUserDto);
   }
 
   @Get()

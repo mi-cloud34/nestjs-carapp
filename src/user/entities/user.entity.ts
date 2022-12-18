@@ -13,7 +13,7 @@ export class User {
     ],
   })
   email: string;
-  @Prop({ require: true, minlength: 6, select: false, })
+  @Prop({ require: true,})
   password: string;
   @Prop({ require: true ,enum: ['user', 'admin'] })
   role: string;
@@ -21,7 +21,7 @@ export class User {
   createdAt: Date;
   @Prop({ require: true })
   place: string;
-  @Prop({ require: true })
+  @Prop({default:"img.jpg"})
   image: string;
   @Prop({ default: false })
   blocked: boolean;

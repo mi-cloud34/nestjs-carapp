@@ -8,6 +8,7 @@ import { IUser } from 'src/interfaces/iuser';
 import { CreateUserDto } from 'src/user/dto/createUserDto';
 import { LoginUserDto } from 'src/user/dto/loginUserDto';
 import { RegisterUserDto } from 'src/user/dto/registerUserDto';
+import { User } from 'src/user/entities/user.entity';
 import { UserService } from 'src/user/user.service';
 
 
@@ -24,21 +25,22 @@ export class AuthService {
     return bcrypt.hash(password, 12);
   }
 
-  async register(user: Readonly<RegisterUserDto>): Promise<IUser | any> {
-    const {email, password } = user;
+  async register(user: RegisterUserDto): Promise<IUser | any> {
+   const {email, password } = user;
 
     const existingUser = await this.userService.findByEmail(email);
 
-    if (existingUser)
+  /*   if (existingUser)
       throw new HttpException(
         'An account with that email already exists!',
         HttpStatus.CONFLICT,
-      );
+      ); */
 
-    const hashedPassword = await this.hashPassword(password);
-    let newUser1:CreateUserDto;
-    const newUser = await this.userService.create(newUser1, hashedPassword);
-    return this.userService._getUserDetails(newUser);
+    const hashedPassword = await this.hashPassword(user.password);
+    const newUser = await this.userService.create(user);
+    newUser.password=hashedPassword;
+    return newUser;
+    //this.userService._getUserDetails(newUser);
   }
 
   async doesPasswordMatch(

@@ -3,7 +3,7 @@ export interface IUser extends Document {
 
     readonly  email: string;
 
-    readonly password: string;
+     password: string;
 
     readonly role: string;
 

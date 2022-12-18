@@ -4,7 +4,7 @@ import { Km } from "src/kms/entities/km.entity";
 import { Model } from "src/models/entities/model.entity";
 import { User } from "src/user/entities/user.entity";
 
-import { Year } from "src/years/entities/year.entity";
+
 export class CreateCarDto {
     @IsString()
     @MaxLength(5)
@@ -14,8 +14,6 @@ export class CreateCarDto {
    readonly modelId: Model
    
    readonly colorId: Color
- 
-   readonly yearId: Year
    
    readonly kmId: Km
    

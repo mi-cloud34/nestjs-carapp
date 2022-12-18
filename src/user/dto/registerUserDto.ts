@@ -11,6 +11,10 @@ export  class RegisterUserDto{
     @IsString()
     @IsNotEmpty()
     @MaxLength(8)
-    readonly password: string;
-    
+     password: string;
+    readonly role: string;
+    readonly createdAt: Date;
+    readonly place: string;
+    readonly image: string;
+    readonly blocked: boolean;
 }
