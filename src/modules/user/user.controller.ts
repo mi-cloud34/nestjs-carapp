@@ -12,7 +12,7 @@ import {
 import { CreateUserDto } from './dto/createUserDto';
 import { UpdateUserDto } from './dto/updateUserDto';
 import { UserService } from './user.service';
-import { IUser } from 'src/common/interfaces/iuser';
+import { IUser } from 'src/common/interfaces/user.interface';
 
 @Controller('users')
 export class UserController {

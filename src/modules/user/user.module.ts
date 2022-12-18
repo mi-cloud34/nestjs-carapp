@@ -1,7 +1,7 @@
 import { UserSchema } from './entities/user.entity';
 import { MongooseModule } from '@nestjs/mongoose';
 
-import { REPOSİTORY_SERVICE } from 'src/common/repositories/ırepositories';
+import { REPOSİTORY_SERVICE } from 'src/common/repositories/repository.interface';
 import { UserService } from './user.service';
 import { UserController } from './user.controller';
 import { Module } from '@nestjs/common';

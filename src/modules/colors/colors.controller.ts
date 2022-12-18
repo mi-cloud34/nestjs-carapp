@@ -11,7 +11,7 @@ import {
   Inject,
   forwardRef,
 } from '@nestjs/common';
-import { IRepository } from 'src/common/repositories/ırepositories';
+import { IRepository } from 'src/common/repositories/repository.interface';
 import { ColorsService } from './colors.service';
 import { CreateColorDto } from './dto/create-color.dto';
 import { UpdateColorDto } from './dto/update-color.dto';

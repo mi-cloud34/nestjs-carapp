@@ -1,8 +1,8 @@
 import { Injectable } from '@nestjs/common';
 import { InjectModel } from '@nestjs/mongoose';
 import { Model } from 'mongoose';
-import { IColor } from 'src/common/interfaces/ıcolors';
-import { IRepository } from 'src/common/repositories/ırepositories';
+import { IColor } from 'src/common/interfaces/colors.interface';
+import { IRepository } from 'src/common/repositories/repository.interface';
 import { CreateColorDto } from './dto/create-color.dto';
 import { UpdateColorDto } from './dto/update-color.dto';
 import { Color } from './entities/color.entity';
