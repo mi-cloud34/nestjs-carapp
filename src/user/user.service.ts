@@ -10,10 +10,10 @@ import { User, UserDocument } from "./entities/user.entity";
 @Injectable()
 export class UserService {
   constructor(
-    @InjectModel('User') private readonly userModel: Model<IUser>,
+    @InjectModel('User') private readonly userModel: Model<User>,
   ) {}
 
-  _getUserDetails(user: UserDocument):IUser {
+  _getUserDetails(user: User):User {
      return user;
     {
     //   id: user._id,
@@ -22,14 +22,14 @@ export class UserService {
     // };
   }
   }
-  async findByEmail(email: string): Promise<UserDocument | null> {
+  async findByEmail(email: string): Promise<User | null> {
     return this.userModel.findOne({ email }).exec();
   }
 
-  async findById(id: string): Promise<IUser | null> {
+  async findById(id: string): Promise<User> {
     const user = await this.userModel.findById(id).exec();
     if (!user) return null;
-    return this._getUserDetails(user);
+    return user;
   }
  async findAll():Promise<IUser[]>{
   return await this.userModel.find();
@@ -44,14 +44,14 @@ export class UserService {
       newUser,//hashedPassword
     );
   } */
-  async create(data:RegisterUserDto): Promise<IUser> {
-    const newCar =new this.userModel(data);
-    return await newCar.save();
+  async create(data:CreateUserDto): Promise<User> {
+    const newCar =await this.userModel.create(data) 
+    return  newCar;
   }
   async remove(id:string):Promise<IUser>{
     return await this.userModel.findByIdAndDelete(id)
   }
-  async update(id:string,updateUser:UpdateUserDto):Promise<IUser>{
+  async update(id:string,updateUser:UpdateUserDto):Promise<User>{
     return await this.userModel.findByIdAndUpdate(id,updateUser)
   }
 

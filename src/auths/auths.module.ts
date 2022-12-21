@@ -9,6 +9,7 @@ import { AuthService } from './auths.service';
 
 import { JwtGuard } from './guards/jwt.guard';
 import { JwtStrategy } from './guards/jwt.strategy';
+import { LocalStrategy } from './guards/local_strategy';
 
 @Module({
   imports: [
@@ -22,7 +23,7 @@ import { JwtStrategy } from './guards/jwt.strategy';
     }),
   ],
   controllers: [AuthController],
-  providers: [AuthService, JwtGuard, JwtStrategy],
+  providers: [AuthService, JwtGuard,LocalStrategy, JwtStrategy],
  
 })
 

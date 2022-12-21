@@ -25,10 +25,10 @@ export class AuthService {
     return bcrypt.hash(password, 12);
   }
 
-  async register(user: RegisterUserDto): Promise<IUser | any> {
-   const {email, password } = user;
+  async register(user: CreateUserDto): Promise<User> {
+   /* const {email, password } = user;
 
-    const existingUser = await this.userService.findByEmail(email);
+    const existingUser = await this.userService.findByEmail(email); */
 
   /*   if (existingUser)
       throw new HttpException(
@@ -36,9 +36,9 @@ export class AuthService {
         HttpStatus.CONFLICT,
       ); */
 
-    const hashedPassword = await this.hashPassword(user.password);
+   // const hashedPassword = await this.hashPassword(user.password);
     const newUser = await this.userService.create(user);
-    newUser.password=hashedPassword;
+    //newUser.password=hashedPassword;
     return newUser;
     //this.userService._getUserDetails(newUser);
   }
@@ -53,7 +53,7 @@ export class AuthService {
   async validateUser(
     email: string,
     password: string,
-  ): Promise<IUser | null> {
+  ): Promise<User | null> {
     const user = await this.userService.findByEmail(email);
     const doesUserExist = !!user;
 

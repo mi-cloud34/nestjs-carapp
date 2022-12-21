@@ -1,12 +1,13 @@
 import { Controller, Get, Post, Body, Patch, Param, Delete, forwardRef, Inject } from '@nestjs/common';
 import { CreateUserDto } from './dto/createUserDto';
+import { RegisterUserDto } from './dto/registerUserDto';
 import { UpdateUserDto } from './dto/updateUserDto';
 import { UserService } from './user.service';
  
 
 @Controller('users') 
   export class UserController {
-  constructor( @Inject(forwardRef(() => UserService)) private readonly usersService: UserService) {}
+  constructor(  private readonly usersService: UserService) {}
 
   @Post()
   create(@Body()createUserDto: CreateUserDto ) {

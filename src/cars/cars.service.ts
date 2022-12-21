@@ -20,9 +20,12 @@ export class CarsService implements IRepository<ICar>{
     return await newCar.save();
  }
   async findAll(): Promise<ICar[]> {
-    
-    return  await this.carModel.find().exec();
-   // return  await this.carModel.find().populate({path:'Color', select:'name description userId'}).exec();
+    const car=await this.carModel.find();
+   // return  await this.carModel.find().exec();
+  /*  if (car) {
+    await car.populate(opts:{path:'color', select:'name description userId'});
+   } */
+    return car;
 }
   async findOne(id: string): Promise<ICar> {
     return  await this.carModel.findById(id).exec();

@@ -1,4 +1,4 @@
-import { IsNotEmpty, IsString, MaxLength } from "class-validator";
+import { isBoolean, IsBoolean, IsDateString, IsNotEmpty, IsString, MaxLength } from "class-validator";
 
 export  class RegisterUserDto{
     @IsString()
@@ -12,9 +12,14 @@ export  class RegisterUserDto{
     @IsNotEmpty()
     @MaxLength(8)
      password: string;
-    readonly role: string;
-    readonly createdAt: Date;
-    readonly place: string;
-    readonly image: string;
-    readonly blocked: boolean;
+     //@IsString()
+    // readonly role: string;
+    // @IsDateString()
+    // readonly createdAt: Date;
+    // @IsString()
+    // readonly place: string;
+    // @IsString()
+    // readonly image: string;
+    // @IsBoolean()
+    // readonly blocked: boolean;
 }
